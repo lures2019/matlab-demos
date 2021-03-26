@@ -22,7 +22,7 @@
 
 - 变量名不应该覆盖内建函数名，在matlab中变量的调用优先级高于函数，因此变量名不应该覆盖内置函数
 
-    ![](images/优先级顺序.png)
+    ![](./images/优先级顺序.png)
 
     ```matlab
     cos = 'This is a test';
@@ -45,11 +45,11 @@
 
 - 一些有特殊意义的单词不适合做变量名：
 
-    ![](images/keywords不要做变量名.png)
+    ![](./images/keywords不要做变量名.png)
 
 - `keywords`不适合做变量名：
 
-    ![](images/iskeyword查看关键字.png)
+    ![](./images/iskeyword查看关键字.png)
 
 
 
@@ -57,7 +57,7 @@
 
 matlab中的变量类型有：`logical,char,numeric,cell,struct`等以及它们组成的数组或者矩阵！
 
-![](images/变量的类型.png)
+![](./images/变量的类型.png)
 
 
 
@@ -73,7 +73,7 @@ matlab中的变量类型有：`logical,char,numeric,cell,struct`等以及它们�
 
 要永久修改则需要在`preference`中修改：
 
-![](images/预设项修改.png)
+![](./images/预设项修改.png)
 
 
 
@@ -83,7 +83,7 @@ matlab中的变量类型有：`logical,char,numeric,cell,struct`等以及它们�
 
 - 其他实用的命令
 
-    ![](images/常用的几种命令.png)
+    ![](./images/常用的几种命令.png)
 
     `clc`就可以理解为清屏，类似于Windows下的`cls`和Linux下的`clear`
 
@@ -112,7 +112,7 @@ matlab中的变量类型有：`logical,char,numeric,cell,struct`等以及它们�
 
     相关示例如下图：
 
-    ![](images/matlab数学运算示例.png)
+    ![](./images/matlab数学运算示例.png)
 
 注意：在matlab下`log`就代表`ln`运算
 
@@ -150,21 +150,21 @@ matlab中的变量类型有：`logical,char,numeric,cell,struct`等以及它们�
 
     在matlab中，使用`[]`将待输入的矩阵内容括起来，使用空格或者逗号`,`分隔行内变量，使用`;`分隔每一行
 
-    ![](images/矩阵的定义.png)
+    ![](./images/矩阵的定义.png)
 
 - 使用冒号运算符`:`可以创建一个长向量，其语法如下：
 
-    ![](images/冒号运算符.png)
+    ![](./images/冒号运算符.png)
 
     下面是具体示例：
 
-    ![](images/冒号运算符具体示例.png)
+    ![](./images/冒号运算符具体示例.png)
 
 - 定义特殊矩阵：
 
     是线代中一些常见的矩阵
 
-    ![](images/线代中常见的特殊矩阵.png)
+    ![](./images/线代中常见的特殊矩阵.png)
 
 
 
@@ -174,7 +174,7 @@ matlab中的变量类型有：`logical,char,numeric,cell,struct`等以及它们�
 
 - 矩阵有两种索引方式，按照一维索引和二维索引，对于一个一般的矩阵，其索引顺序如下：
 
-    ![](images/矩阵的索引.png)
+    ![](./images/矩阵的索引.png)
 
 - 矩阵的索引可以使用冒号`:`，表示选取所有的行或者所有的列
 
@@ -182,7 +182,7 @@ matlab中的变量类型有：`logical,char,numeric,cell,struct`等以及它们�
 
     如下是矩阵的索引规则：
 
-    ![](images/矩阵的相关操作.png)
+    ![](./images/矩阵的相关操作.png)
 
 
 
@@ -190,7 +190,7 @@ matlab中的变量类型有：`logical,char,numeric,cell,struct`等以及它们�
 
 - 操作矩阵的运算符：
 
-    ![](images/操作矩阵的运算符.png)
+    ![](./images/操作矩阵的运算符.png)
 
 - 操作矩阵的函数：
 
@@ -202,7 +202,7 @@ matlab中的变量类型有：`logical,char,numeric,cell,struct`等以及它们�
     7 & 0 & 9
     \end{array}\right]
     $$
-    ![](images/操作矩阵的常见函数.png)
+    ![](./images/操作矩阵的常见函数.png)
 
     对于上面这些函数,除第一个参数以外,其它参数都是可选的.
 
@@ -214,7 +214,7 @@ matlab中的变量类型有：`logical,char,numeric,cell,struct`等以及它们�
 
 与大多数编程语言相同，matlab有如下流程控制语句：
 
-![](images/流程控制语句.png)
+![](./images/流程控制语句.png)
 
 > 注意：上述所有循环和条件语句都要在末尾以end闭合
 
@@ -222,7 +222,7 @@ matlab中的变量类型有：`logical,char,numeric,cell,struct`等以及它们�
 
 matlab还有以下关系运算符：
 
-![](images/关系运算符.png)
+![](./images/关系运算符.png)
 
 > 注意：&&和||支持逻辑短路功能
 
@@ -234,7 +234,7 @@ matlab还有以下关系运算符：
 
 ##### if语句
 
-![](images/if语句.png)
+![](./images/if语句.png)
 
 ```matlab
 a = 10;
@@ -250,7 +250,7 @@ end
 
 ##### switch语句
 
-![](images/switch语句.png)
+![](./images/switch语句.png)
 
 ```matlab
 % 使用switch多分支选择语句
@@ -271,7 +271,7 @@ end
 
 ##### while语句
 
-![](images/while语句.png)
+![](./images/while语句.png)
 
 ```matlab
 % 使用while循环语句，prod(1:n)是求n!
@@ -287,7 +287,7 @@ disp(n);
 
 ##### for语句
 
-![](images/for语句.png)
+![](./images/for语句.png)
 
 ```matlab
 % 使用for循环语句
@@ -348,7 +348,7 @@ toc
 
 分别运行当前节之后：
 
-![](images/循环语句提前分配内存.png)
+![](./images/循环语句提前分配内存.png)
 
 可以看到，前一节程序比后一节程序所用的时间更长，这是因为：对于程序一，没有预先为变量A分配内存，因此每当A的形状发生改变时，都需要重新为A分配内存地址，这花费了更多的时间！
 
@@ -399,7 +399,7 @@ toc
 
 可以在编辑器中看到`mean`函数的源代码如下：
 
-![](images/mean函数源代码.png)
+![](./images/mean函数源代码.png)
 
 ##### 以函数名.m文件形式定义函数
 
@@ -422,7 +422,7 @@ function [输出变量名] = 函数名(输入变量名)
 
 在matlab中内置了一些函数参数如下：
 
-![](images/matlab内置的函数参数.png)
+![](./images/matlab内置的函数参数.png)
 
 matlab不提供其他高级语言的指定默认参数值以及函数重载等语法，但灵活使用上述内置的函数参数可以在一定程度上实现指定默认参数值以及方法重载：
 
@@ -457,7 +457,7 @@ x = x0 + v0 .* t + 1/2*9.8*t.* t;
 
 如下图：
 
-![](images/freebody自定义函数.png)
+![](./images/freebody自定义函数.png)
 
 
 
@@ -482,7 +482,7 @@ end
 
 > disp出来的是一个包含两个element的向量，第一个是那个string，第二个是这个variable，两个之间用空格分开，或者你也可以用“，”
 
-![](images/F2C自定义函数.png)
+![](./images/F2C自定义函数.png)
 
 
 
@@ -494,4 +494,4 @@ end
 
 可以通过函数句柄调用该方法：
 
-![](images/函数句柄.png)
+![](./images/函数句柄.png)
