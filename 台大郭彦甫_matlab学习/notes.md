@@ -729,5 +729,216 @@ matlab支持的数值类型如下：
 
 
 
+### 四、matlab基础绘图
 
+#### 1、图像的绘制与装饰
+
+- 使用`plot()`函数绘制图线，语法为：
+
+    ```matlab
+    plot(x,y,LineSpec)
+    ```
+
+    其中各参数的意义如下：
+
+    - `x`：图线上点的`x`坐标
+
+    - `y`：图线上点的`y`坐标
+
+    - `LineSpec`: 图线的线条设定,三个指定**线型**,**标记符号**和**颜色**的**设定符**组成一个字符串,设定符不区分先后.具体细节请参考[官方文档](https://www.mathworks.com/help/matlab/ref/linespec.html).
+
+        ![](./images/plot绘图参数.png)
+
+    - 下面的例子演示了绘制(0,2*π*)内余弦函数的图像：
+
+        ```matlab
+        x = 0:pi/20:2*pi;
+        y = cos(x);
+        % r.-的意思是：红线、特殊点用.标记，整体用实现连接
+        plot(x,y,'r.-')
+        ```
+
+        ![](./images/plot绘图示例.png)
+
+- 装饰图线
+
+    使用`legend()`函数为图片增加图例
+
+    使用`legend(label1,...labeln)`函数可以为图片添加图例
+
+    ```matlab
+    x=0:0.5:4*pi;
+    y=sin(x); h=cos(x); w=1./(1+exp(-x)); g=(1/(2*pi*2)^0.5).*exp((-1.*(x-2*pi).^2)./(2*2^2));
+    plot(x,y,'bd-' ,x,h,'gp:',x,w,'ro-' ,x,g,'c^-');		% 绘制多条图线
+    legend('sin(x)','cos(x)','Sigmoid','Gauss function');	% 添加图例
+    ```
+
+    ![](./images/plot装饰图像.png)
+
+    使用`title()`和`x/y.label()`为图片增加标题和标签
+
+    ```matlab
+    x = 0:0.1:2*pi; y1 = sin(x); y2 = exp(-x);
+    plot(x, y1, '--*', x, y2, ':o');
+    xlabel('t = 0 to 2\pi');
+    % 后面这种如：e^{-x}的是latex语法
+    ylabel('values of sin(t) and e^{-x}')
+    title('Function Plots of sin(t) and e^{-x}');
+    legend('sin(t)','e^{-x}');
+    ```
+
+     ![](./images/plot添加标签.png)
+
+    使用`text()`和`annotation()`为图片添加注解
+
+    ```matlab
+    x = linspace(0,3); y = x.^2.*sin(x); plot(x,y);
+    line([2,2],[0,2^2*sin(2)]);
+    str = '$$ \int_{0}^{2} x^2\sin(x) dx $$';
+    text(0.25,2.5,str,'Interpreter','latex');
+    annotation('arrow','X',[0.32,0.5],'Y',[0.6,0.4]); 
+    ```
+
+    ![](./images/plot的text.png)
+
+    
+
+#### 2、控制坐标轴、边框与网格
+
+使用下列命令可以控制坐标轴、边框和网络
+
+![](./images/控制边框和网格.png)
+
+下面的例子演示了`axis`命令的效果：
+
+```matlab
+t = 0:0.1:2*pi; x = 3*cos(t); y = sin(t);
+subplot(2, 2, 1); plot(x, y); axis normal
+subplot(2, 2, 2); plot(x, y); axis square
+subplot(2, 2, 3); plot(x, y); axis equal
+subplot(2, 2, 4); plot(x, y); axis equal tight
+```
+
+![](./images/subplot分行显示.png)
+
+
+
+#### 3、绘制多条图线
+
+- 在一个图像上绘制多条图线
+
+    默认情况下，每次执行`plot()`函数都会清除上一次绘图的结果，多次执行`plot()`只会保留最后一次绘制的图形
+
+    ```matlab
+    plot(cos(0:pi/20:2*pi));
+    plot(sin(0:pi/20:2*pi));
+    ```
+
+- 我们可以使用`hold on`和`hold off`命令控制绘图区域的刷新，使得多个绘图结果同时保留在绘图区域中
+
+    ```matlab
+    hold on		% 提起画笔,开始绘制一组图片			
+    plot(cos(0:pi/20:2*pi));
+    plot(sin(0:pi/20:2*pi));
+    hold off	% 放下画笔,该组图片绘制完毕
+    ```
+
+    ![](./images/plot绘制多条线.png)
+
+
+
+#### 4、在一个窗口内绘制多个图像
+
+使用`subplot()`函数可以在一个窗口内绘制多个图像，其语法如下：
+
+`subplot(m,n,p)`
+
+该命令表示将当前图窗划分为`m`×`n`个网格,并在第`p`个网格内绘制图像.
+
+示例如下：
+
+```matlab
+subplot(2,2,1);
+x = linspace(-3.8,3.8);
+y_cos = cos(x);
+plot(x,y_cos);
+title('Subplot 1: Cosine')
+
+subplot(2,2,2);
+y_poly = 1 - x.^2./2 + x.^4./24;
+plot(x,y_poly,'g');
+title('Subplot 2: Polynomial')
+
+subplot(2,2,[3,4]);
+plot(x,y_cos,'b',x,y_poly,'g');
+title('Subplot 3 and 4: Both')
+```
+
+![](./images/subplot.png)
+
+
+
+#### 5、图形对象的操作
+
+在MATLAB中,图形都是以对象的形式储存在内存中,通过获取其图形句柄可以对其进行操作
+
+![](./images/图形句柄.png)
+
+- 获取图形句柄
+
+    图形句柄本质上就是一个浮点数,可以唯一确定一个图形对象.下面几个函数用于获取图形句柄.
+
+    ![](./images/获取图形句柄.png)
+
+    所有绘图函数也会返回图形对象的句柄
+
+    ![](./images/绘图函数返回图形句柄.png)
+
+    
+
+- 通过图形句柄操作图形属性
+
+    使用`get()`和`set()`函数可以对图形对象的属性进行访问和修改.访问[官方文档](http://www.mathworks.com/help/matlab/ref/figure-properties.html)可以查看所有图形对象的属性.
+
+    - `set(H,Name,Value)`
+    - `v = get(h,propertyName)`
+
+    ![](./images/get和set.png)
+
+    下面两个例子演示使用图形句柄操作图形对象:
+
+    - 改变坐标轴属性：
+
+        ```matlab
+        % 第一张图
+        set(gca, 'FontSize', 25);
+        
+        % 第二张图
+        set(gca, 'XTick', 0:pi/2:2*pi);
+        set(gca, 'XTickLabel', 0:90:360);
+        
+        % 第三张图
+        set(gca, 'FontName', 'symbol');
+        set(gca, 'XTickLabel', {'0', 'p/2', 'p', '3p/2', '2p'});
+        ```
+
+        ![](./images/改变坐标轴属性.png)
+
+    - 改变线型
+
+        ```matlab
+        h = plot(x,y); 
+        set(h, 'LineStyle','-.', ...
+        	'LineWidth', 7.0, ...
+        	'Color', 'g');
+        ```
+
+        ![](./images/改变线型.jpg)
+
+#### 6、将图形保存到文件
+
+使用`saveas(fig,filename)`命令可以将图形对象保存到文件中,其中`fig`为图形句柄,`filname`为文件名.
+
+`saveas(gcf, 'myfigure.png')`
+使用`saveas()`函数将图像保存成位图时,会发生失真.要精确控制生成图片的质量,可以使用`print()`函数,见[官方文档](https://www.mathworks.com/help/matlab/ref/print.html)
 
